@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
@@ -19,7 +19,7 @@ def clip():
         return jsonify({"error": "No URL provided"}), 400
 
     return jsonify({
-        "message": "Clip processing started",
+        "message": "Clip received",
         "url": url
     })
 
