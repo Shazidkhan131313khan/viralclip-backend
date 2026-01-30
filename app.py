@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify, send_from_directory
+import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder=".")
 
 @app.route("/")
 def home():
@@ -8,7 +9,7 @@ def home():
 
 @app.route("/test")
 def test():
-    return "✅ API is working properly!"
+    return jsonify({"status": "API working ✅"})
 
 @app.route("/clip", methods=["POST"])
 def clip():
@@ -23,6 +24,3 @@ def clip():
         "message": "Clip processing started",
         "video_url": url
     })
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
