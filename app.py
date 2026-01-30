@@ -1,10 +1,10 @@
 from flask import Flask, request, jsonify, send_from_directory
 
-app = Flask(__name__, static_folder=".")
+app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return send_from_directory(".", "index.html")
+    return "✅ Viral Clip Backend is running!"
 
 @app.route("/test")
 def test():
@@ -19,7 +19,9 @@ def clip():
         return jsonify({"error": "No URL provided"}), 400
 
     return jsonify({
-        "status": "success",
         "message": "Clip processing started",
-        "video_url": url
+        "url": url
     })
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=10000)
