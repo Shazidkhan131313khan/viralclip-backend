@@ -12,7 +12,7 @@ def test():
 
 @app.route("/clip", methods=["POST"])
 def clip():
-    data = request.get_json()
+    data = request.json
     url = data.get("url")
 
     if not url:
@@ -20,8 +20,8 @@ def clip():
 
     return jsonify({
         "status": "success",
-        "message": "Video received",
-        "url": url
+        "message": "Clip processing started",
+        "video_url": url
     })
 
 if __name__ == "__main__":
